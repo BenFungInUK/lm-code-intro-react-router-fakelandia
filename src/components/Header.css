@@ -13,8 +13,13 @@ header {
   flex-grow: 1;
   display: flex;
   justify-content: space-around;
+  font-size: x-large;
 }
 
 .header__link {
-  font-size: x-large;
+  color: blue;
+}
+
+.header__link-active {
+  color: red;
 }

@@ -5,13 +5,28 @@ const Header: React.FC = () => (
   <header>
     <div className="header__title">FAKELANDIA JUSTICE DEPARTMENT</div>
     <div className="header__linkContainer">
-      <NavLink className="header__link" to="/">
+      <NavLink
+        className={({ isActive }) =>
+          "header__link" + (!isActive ? "" : "-active")
+        }
+        to="/"
+      >
         Home
       </NavLink>
-      <NavLink className="header__link" to="/misdemeanour">
+      <NavLink
+        className={({ isActive }) =>
+          "header__link" + (!isActive ? "" : "-active")
+        }
+        to="/misdemeanour"
+      >
         Misdemeanours
       </NavLink>
-      <NavLink className="header__link" to="/confess">
+      <NavLink
+        className={({ isActive }) =>
+          "header__link" + (!isActive ? "" : "-active")
+        }
+        to="/confess"
+      >
         Confess To Us
       </NavLink>
     </div>
