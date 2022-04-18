@@ -1,0 +1,20 @@
+header {
+  display: flex;
+  align-items: center;
+  border: 0.1vw solid black;
+  padding: 1vw;
+}
+
+.header__title {
+  flex-basis: 50px;
+}
+
+.header__linkContainer {
+  flex-grow: 1;
+  display: flex;
+  justify-content: space-around;
+}
+
+.header__link {
+  font-size: x-large;
+}

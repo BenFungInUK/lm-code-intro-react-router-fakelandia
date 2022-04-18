@@ -1,0 +1,10 @@
+.mainContainer {
+  display: flex;
+  flex-direction: column;
+  height: 97vh;
+  margin: 1vw;
+}
+
+.mainContiner__main {
+  flex-grow: 1;
+}
