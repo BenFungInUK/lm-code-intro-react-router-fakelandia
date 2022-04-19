@@ -4,7 +4,7 @@ import { MISDEMEANOURS } from "./GenerateMisdemeanours";
 import { useMisdemeanourContext } from "./MisdemeanourContext";
 import "./MisdemeanourList.css";
 
-const MisdemeanoutList = () => {
+const MisdemeanourList = () => {
   const { misdemeanourList } = useMisdemeanourContext();
   const [filteredList, setFilteredList] = useState(misdemeanourList);
   const { width, height } = useWindowDimensions();
@@ -14,11 +14,9 @@ const MisdemeanoutList = () => {
   }, [misdemeanourList]);
 
   return (
-    <div className="misdemeanoutListContainer">
-      <select onChange={onChangeFilterSelection}>
-        <option value={"show all"} selected>
-          Show All
-        </option>
+    <div className="misdemeanourListContainer">
+      <select onChange={onChangeFilterSelection} defaultValue={"show all"}>
+        <option value={"show all"}>Show All</option>
         {MISDEMEANOURS.map((item, index) => {
           return (
             <option value={item} key={index}>
@@ -27,22 +25,23 @@ const MisdemeanoutList = () => {
           );
         })}
       </select>
-      <div className="misdemeanoutListTitle">
-        <label className="misdemeanoutList__item">Citizen ID</label>
-        <label className="misdemeanoutList__item">Date</label>
-        <label className="misdemeanoutList__item">Misdemeanour</label>
-        <label className="misdemeanoutList__item">Punishment Idea</label>
+      <div className="misdemeanourListTitle">
+        <label className="misdemeanourList__item">Citizen ID</label>
+        <label className="misdemeanourList__item">Date</label>
+        <label className="misdemeanourList__item">Misdemeanour</label>
+        <label className="misdemeanourList__item">Punishment Idea</label>
       </div>
       {filteredList.map((item, index) => {
         return (
-          <div className="misdemeanoutList" key={index}>
-            <label className="misdemeanoutList__item">{item.citizenId}</label>
-            <label className="misdemeanoutList__item">{item.date}</label>
-            <label className="misdemeanoutList__item">
-              {item.misdemeanour}
-            </label>
+          <div className="misdemeanourList" key={index}>
+            <label className="misdemeanourList__item">{item.citizenId}</label>
+            <label className="misdemeanourList__item">{item.date}</label>
+            <div className="misdemeanourList__item misdemeanourList__misdemeanourContainer">
+              <label>{item.content.subject + " " + item.content.emoji}</label>
+              <label>{item.content.detail}</label>
+            </div>
             <img
-              className="misdemeanoutList__item"
+              className="misdemeanourList__item"
               src={`https://picsum.photos/${Math.round(
                 width * 0.2
               )}/${Math.round(height * 0.2)}?random=${index}`}
@@ -69,4 +68,4 @@ const MisdemeanoutList = () => {
   }
 };
 
-export default MisdemeanoutList;
+export default MisdemeanourList;

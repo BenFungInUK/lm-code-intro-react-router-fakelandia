@@ -1,24 +1,29 @@
-.misdemeanoutListContainer {
+.misdemeanourListContainer {
   text-align: center;
   margin: 1vw;
   margin-left: 0vw;
 }
 
-.misdemeanoutListTitle {
+.misdemeanourListTitle {
   display: flex;
   justify-content: space-evenly;
   margin-top: 1vw;
   margin-bottom: 1vw;
 }
 
-.misdemeanoutList {
+.misdemeanourList {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
 }
 
-.misdemeanoutList__item {
+.misdemeanourList__item {
   flex: 1 1 0;
   margin: 1vw;
   margin-top: 0vw;
+}
+
+.misdemeanourList__misdemeanourContainer {
+  display: flex;
+  flex-direction: column;
 }

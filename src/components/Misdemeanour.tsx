@@ -1,12 +1,7 @@
-import { MisdemeanourContextProvider } from "./MisdemeanourContext";
 import MisdemeanourList from "./MisdemeanourList";
 
 const Misdemeanour: React.FC = () => {
-  return (
-    <MisdemeanourContextProvider>
-      <MisdemeanourList />
-    </MisdemeanourContextProvider>
-  );
+  return <MisdemeanourList />;
 };
 
 export default Misdemeanour;

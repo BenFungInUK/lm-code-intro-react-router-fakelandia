@@ -1,0 +1,31 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2vw;
+  margin: 4vw;
+  margin-top: 8vw;
+  font-size: large;
+}
+
+.form__inputContainer {
+  display: flex;
+  column-gap: 2vw;
+  justify-content: flex-end;
+}
+
+.form__input {
+  font-size: large;
+}
+
+.form__textarea {
+  padding: 0.5vw;
+}
+
+.form__submitBtnContainer {
+  text-align: center;
+}
+
+.form__submitBtn {
+  padding: 1vw;
+}

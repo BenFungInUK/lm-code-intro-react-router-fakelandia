@@ -4,11 +4,29 @@ export const MISDEMEANOURS = [
   "lift",
   "united",
 ] as const;
+
+export const MISDEMEANOURS_MAPPING = {
+  rudeness: { emoji: "🤪", subject: "Mild Public Rudeness", detail: "" },
+  vegetables: {
+    emoji: "🥗",
+    subject: "Not Eating Your Vegetables",
+    detail: "",
+  },
+  lift: { emoji: "🗣", subject: "Speaking in a Lift", detail: "" },
+  united: { emoji: "😈", subject: "Supporting Manchester United", detail: "" },
+} as const;
+
 export type Misdemeanour = typeof MISDEMEANOURS[number];
+export type MisdemeanourContent = {
+  emoji: string;
+  subject: string;
+  detail: string;
+};
 
 export type MisdemeanourObj = {
   citizenId: number;
   misdemeanour: Misdemeanour;
+  content: MisdemeanourContent;
   date: string;
 };
 
@@ -23,9 +41,12 @@ export default async function generateMisdemeanours(
   const misdemeanours = [];
 
   for (let i = 0; i < amount; i++) {
+    const tmpMisdemeanours = choose<Misdemeanour>([...MISDEMEANOURS]);
+
     misdemeanours.push({
       citizenId: Math.floor(i + rand(37) * rand(967)),
-      misdemeanour: choose<Misdemeanour>([...MISDEMEANOURS]),
+      misdemeanour: tmpMisdemeanours,
+      content: MISDEMEANOURS_MAPPING[tmpMisdemeanours],
       date: new Date().toLocaleDateString(),
     });
   }
