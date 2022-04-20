@@ -45,6 +45,8 @@ const MisdemeanourList = () => {
               src={`https://picsum.photos/${Math.round(
                 width * 0.2
               )}/${Math.round(height * 0.2)}?random=${index}`}
+              width={Math.round(width * 0.2)}
+              height={Math.round(height * 0.2)}
               alt="Punishment Idea"
             />
           </div>
