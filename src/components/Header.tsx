@@ -10,6 +10,7 @@ const Header: React.FC = () => (
           "header__link" + (!isActive ? "" : "-active")
         }
         to="/"
+        id="homeLink"
       >
         Home
       </NavLink>
@@ -18,6 +19,7 @@ const Header: React.FC = () => (
           "header__link" + (!isActive ? "" : "-active")
         }
         to="/misdemeanour"
+        id="misdemeanourLink"
       >
         Misdemeanours
       </NavLink>
@@ -26,6 +28,7 @@ const Header: React.FC = () => (
           "header__link" + (!isActive ? "" : "-active")
         }
         to="/confess"
+        id="confessLink"
       >
         Confess To Us
       </NavLink>

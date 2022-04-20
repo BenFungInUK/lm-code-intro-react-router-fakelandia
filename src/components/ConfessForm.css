@@ -29,3 +29,12 @@
 .form__submitBtn {
   padding: 1vw;
 }
+
+.form__errMsg {
+  font-size: medium;
+  color: red;
+}
+
+.form__input--hidden {
+  visibility: hidden;
+}

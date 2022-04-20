@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { Misdemeanour, MISDEMEANOURS } from "./GenerateMisdemeanours";
-import "./ConfessForm.css";
 import { useMisdemeanourContext } from "./MisdemeanourContext";
+import "./ConfessForm.css";
+import ConfessFormInput from "./ConfessFormInput";
 
 const ConfessForm = () => {
   const [submitDisnable, setSubmitDisable] = useState(true);
@@ -9,36 +10,43 @@ const ConfessForm = () => {
   const [subject, setSubject] = useState("");
   const [contactType, setContactType] = useState("talk");
   const [detail, setDetail] = useState("");
+  const [validationMsg, setValidationMsg] = useState("");
   const { misdemeanourList, setMisdemeanourList } = useMisdemeanourContext();
 
   useEffect(() => {
-    citizenId.length > 0 && subject.length > 0 && detail.length > 0
+    if (citizenId.length > 0) {
+      const regex = /^[1-9][0-9]*$/g;
+      const found = citizenId.match(regex);
+      if (!found) setValidationMsg("Citizen ID must be an integer.");
+      else setValidationMsg("");
+    }
+    citizenId.length > 0 &&
+    subject.length > 0 &&
+    detail.length > 0 &&
+    validationMsg.length === 0
       ? setSubmitDisable(false)
       : setSubmitDisable(true);
-  }, [citizenId, subject, detail]);
+  }, [citizenId, subject, detail, validationMsg]);
 
   return (
     <form onSubmit={(e) => onSubmitConfess(e)} className="form">
-      <div className="form__inputContainer">
-        <label>Citizen ID</label>
-        <input
-          className="form__input"
-          type="text"
-          required
-          value={citizenId}
-          onChange={(e) => setCitizenId(e.target.value)}
-        />
-      </div>
-      <div className="form__inputContainer">
-        <label>Subject</label>
-        <input
-          className="form__input"
-          type="text"
-          required
-          value={subject}
-          onChange={(e) => setSubject(e.target.value)}
-        />
-      </div>
+      {validationMsg.length > 0 && (
+        <div className="form__inputContainer form__errMsg">
+          <label>{validationMsg}</label>
+        </div>
+      )}
+      <ConfessFormInput
+        labelText="Citizen ID"
+        inputValue={citizenId}
+        onChangeFunc={setCitizenId}
+        name="citizenInput"
+      />
+      <ConfessFormInput
+        labelText="Subject"
+        inputValue={subject}
+        onChangeFunc={setSubject}
+        name="subjectInput"
+      />
       <div className="form__inputContainer">
         <label>Reason for contact</label>
         <select
@@ -61,6 +69,7 @@ const ConfessForm = () => {
         rows={8}
         value={detail}
         onChange={(e) => setDetail(e.target.value)}
+        aria-label="detailInput"
       ></textarea>
       <div className="form__submitBtnContainer">
         <input

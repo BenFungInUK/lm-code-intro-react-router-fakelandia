@@ -37,8 +37,8 @@ const MisdemeanourList = () => {
             <label className="misdemeanourList__item">{item.citizenId}</label>
             <label className="misdemeanourList__item">{item.date}</label>
             <div className="misdemeanourList__item misdemeanourList__misdemeanourContainer">
-              <label>{item.content.subject + " " + item.content.emoji}</label>
-              <label>{item.content.detail}</label>
+              <label>{item.content?.subject + " " + item.content?.emoji}</label>
+              <label>{item.content?.detail}</label>
             </div>
             <img
               className="misdemeanourList__item"
